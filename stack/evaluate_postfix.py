@@ -1,11 +1,10 @@
 def eva_postfix(expression):
     stack = []
-    operators = {
-            '+': lambda a, b: a+b,
-            '-': lambda a, b: a-b, 
-            '*': lambda a, b: a*b, 
-            '/': lambda a, b: a/b, 
-            }
+    operators = {'+': lambda a, b: a+b,
+                 '-': lambda a, b: a-b,
+                 '*': lambda a, b: a*b,
+                 '/': lambda a, b: a/b,}
+
     tokens = expression.split()
     for token in tokens:
         if token in operators:
@@ -15,8 +14,9 @@ def eva_postfix(expression):
             stack.append(result)
         else:
             stack.append(float(token))
+
     return stack.pop()
 
 
-print(eva_postfix("5 2 + 2 *"))
+print(eva_postfix("5 3 + 2"))
 
