@@ -27,7 +27,7 @@ def buble_sort(arr: list) -> list:
 
     return arr
 
-print("bubble_ sort: ", buble_sort([2, 1, 4, 3]))
+#print("bubble_ sort: ", buble_sort([2, 1, 4, 3]))
 
 
 def quick_sort(arr: list) -> list:
@@ -43,4 +43,4 @@ def quick_sort(arr: list) -> list:
     return quick_sort(left)+middle+quick_sort(right)
 
 
-print("quick sort: ", quick_sort([2, 1, 4, 3]))
+#print("quick sort: ", quick_sort([2, 1, 4, 3]))
