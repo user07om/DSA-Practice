@@ -1,50 +1,71 @@
-def eva_postfix(expression):
-    stack = []
-    operators = {
-            '+': lambda a, b: a+b,
-            '-': lambda a, b: a-b, 
-            '*': lambda a, b: a*b, 
-            '/': lambda a, b: a/b, 
-            }
-    tokens = expression.split()
-    for token in tokens:
-        if token in operators:
-            b = stack.pop()
-            a = stack.pop()
-            result = operators[token](a, b)
-            stack.append(result)
-        else:
-            stack.append(float(token))
-    return stack.pop()
+from collections import defaultdict
+def twoSum_br_f(arr: list[int], target: int) -> list[int]:
+    """Brute Force approch: TC = O(n*2), SC: O(1)"""
+    for i in range(len(arr)):
+        for j in range(i+1, len(arr)):
+            if arr[i] + arr[j] == target:
+                return [i, j]
+    
+    return []
+    
+
+def twoSum_hashmap(arr: list[int], target: int) -> list[int]:
+    """Hash Map approch: TC: O(n), SC: O(n)"""
+    seen: dict = {}
+    for i, num in enumerate(arr):
+        compliment: int = target - num
+        if compliment in seen:
+            return [seen[compliment], i]
+        seen[num] = i
+    return []
 
 
-print(eva_postfix("5 2 + 2 *"))
+#the default twoSum adds only first occurences that add up to the target value
+#but in this version it add all the pairs that addup to the target value.
+def two_sum_all_pairs_hashmap(arr: list, target: int) -> list[list[int]]:
+    result: list = [] #empty list for stroring the list
+    seen: dict = {} #dict
+    for i in range(len(arr)):
+        compliment: int = target - arr[i]
+        # print(compliment)
+        if compliment in seen:
+            for idx in seen[compliment]:
+                result.append([idx, i])
+
+        if arr[i] not in seen:
+            seen[arr[i]] = []
+        seen[arr[i]].append(i)
+
+    return result
+
+# print(two_sum_all_pairs_hashmap([5, 4, 2, 3], 7))
+def two_sum_count_pairs(arr: list, target: int) -> int:
+    count = 0
+    seen: dict = defaultdict(int)
+    for num in arr:
+        compliment = target - num
+        count += seen[compliment]
+        seen[num] += 1
+
+    return count
 
 
-#sorting algo practice (bubble sort, quick sort, selection sort)
-def bubble_sort(arr: list) -> list:
-    n = len(arr)
-    for i in range(n):
-        for j in range(0, n-1):
-            if arr[j] > arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
+def two_sum_count_pairs_bs(arr: list, target: int) -> int:
+    count = 0
+    seen = defaultdict(int)
+    for n in arr:
+        compliment = target - n
+        count += seen[compliment]
+        seen[n] += 1
 
-    return arr
+    return count
+
+# print(two_sum_count_pairs_bs([5, 9, 2, 8], 7))
 
 
-def selection_sort(arr: list) -> list:
-    n = len(arr)
-    for i in range(n):
-        min_idx = i
-        swapped = False
-        for j in range(0, n-i-1):
-            if arr[j] > arr[min_idx]:
-                min_idx = j
-                swapped = True
-
-            arr[i], arr[min_idx] = arr[min_idx], arr[i]
-
-    if not swapped:
-        return arr
-
-print(selection_sort([2, 1, 4, 3]))
+def two_sum_closest_pair(arr: list, target: int) -> list:
+    if len(arr) < 2:
+        return []
+    
+    closest_sum = float('inf')
+    

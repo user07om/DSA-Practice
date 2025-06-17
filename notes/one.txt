@@ -1,0 +1,38 @@
+## 💡 Daily Log Template
+# Date: 2025-06-16
+# Problem: Two Some
+# Difficulty: Easy 
+# Language: JavaScript / Python 
+# Concepts: Greedy 
+# Time taken: ___ mins
+
+## Summary:
+    - problem input and output
+        1 arr and target int given
+        2 result idx of arr that addup to the target.
+    - base cases 
+        1. handle the empty array.
+        2. handle if elements add-up to target not found.
+
+## Pseudocode:
+    consider the arr is [3, 8, 3, 2] and target is 6
+    - set emtpy arr as result. -> find out that instead of storing the indices within the list/dict we can directly return it.find out that instead of storing the indices within the list/dict we can directly return it.
+    - i have to set two loops here.
+        1. loop untill i<=arr.length;
+        2. loop untill j<=arr.length-i -> we can loop the j, from i+1 till len(arr)
+    - condition arr[i] + arr[j] == target; 
+        if True then add those elements in result arr. -> we can return [i, j], list type.
+    - at the end return [].
+
+## Learnings:
+    1. think about the space complexity as well, if it can be possible with defining extra variable or data-type then do it. maybe it will reduce extra code as well as make the code cleaner.
+
+
+## Mistakes:
+    1. trying to solve with the storing those idices in list/dict, which creates too much confusion regarding adding and removing those elemends 
+    2. also done the bad iteration on j loop, which taking the same elements as well as it dos'nt give all the pairs.
+    3. so done the loop till from i+1, so it won't take the i, j too same element and add-up. because it's not required and not good way as well.
+
+
+## Tags:
+#sorting #recursion #debugging

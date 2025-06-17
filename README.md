@@ -1,9 +1,3 @@
-# 🧠 Developer Problem-Solving Checklist
-
-> Use this checklist as a daily guide while solving problems on LeetCode, HackerRank, or your own practice repo.
-
----
-
 ## ✅ Before You Code (Problem Analysis)
 
 - [ ] 🔍 **Understand the Problem**
@@ -77,28 +71,3 @@
 - [ ] What will I do differently next time?
 
 ---
-
-## 💡 Daily Log Template
-
-```bash
-# Date: YYYY-MM-DD
-# Problem: Title (e.g., Merge Intervals)
-# Difficulty: Easy | Medium | Hard
-# Language: JavaScript / Python / etc.
-# Concepts: Sorting, Greedy, etc.
-# Time taken: ___ mins
-
-## Summary:
-...
-
-## Pseudocode:
-...
-
-## Learnings:
-...
-
-## Mistakes:
-...
-
-## Tags:
-#sorting #recursion #debugging
