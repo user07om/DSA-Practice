@@ -1,0 +1,27 @@
+## 💡 Daily Log Template
+# Date: 2025-06-18
+# Problem: Roman To Integer
+# Difficulty: Easy 
+# Language: Python 
+# Concepts: 
+# Time taken: ___ mins
+
+## Summary:
+    - problem input and output
+        1. takes the Roman letters [I, V, X, L, C, D, M] and return the integer to it
+        2. e.g. XXVII -> ans should be 27 because x->10+10 and V->5 and I->1+1
+    - base cases 
+        1. Roman numerals written from largest to smalles like above example of 27
+        2. instead of 4 and 9 (40, 400 / 90, 900) -> XL, CD / XC, CM
+
+## Pseudocode:
+    - set romal numerals as priority from hight to lower.
+    - if it contains any lower-priority numerals first then it's next numarals attach as pairs and subtract first to second one.
+    - then do addition of all those pairs/numarals and return the int.
+
+## Learnings:
+
+## Mistakes:
+
+
+## Tags:

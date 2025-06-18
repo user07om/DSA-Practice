@@ -2,7 +2,7 @@
 # Date: 2025-06-16
 # Problem: Two Some
 # Difficulty: Easy 
-# Language: JavaScript / Python 
+# Language: Python 
 # Concepts: Greedy 
 # Time taken: ___ mins
 
@@ -35,4 +35,4 @@
 
 
 ## Tags:
-#sorting #recursion #debugging
+#bruteforce #not_effecient #debugging
