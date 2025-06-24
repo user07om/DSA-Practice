@@ -1,0 +1,43 @@
+## 💡 Daily Log Template
+# Date: 2025-06-23
+# Problem: insertPosition
+# Difficulty: Easy 
+# Language: Python, JS
+# Concepts: Binary Search 
+# Time taken: ___ mins
+
+## Summary:
+    - Problem is simple just the the BS on arr
+    - if the target not found just return the expected index
+
+## Pseudocode:
+    consider the arr is [1, 3, 5, 6] and target is 2
+    1. in O(n) algo, we normally iterate over the loop and compare each element with the target 
+        as target is greate then iterated element if yes, then assign the i+1 to result variable 
+        at the end just return the result you'll get the expected index
+    2. in O(logn) algo, we use the binary search algo where we devide the array in two halve and find the 
+        expected target index, 
+        - left, right as 0 and len(arr)
+        - while loop over left less then right
+        - get the mid element by adding left+right devide by 2 (floor value only)
+        -> compare target is >= element is year assing the mid+1 to left variable (mean remove the left part of array)
+        -> if no assign the mid-1 to right variable (mean rmeove the right part of array)
+        - at the end return the left variable. because this is the incremental variable is and mid is increasing and decreasing, right is decreasing so.
+
+    
+
+## Learnings:
+    1. its hard to understand the binary search, because approch is easy but the implementation is hard, when trying with diferent logic on the board.
+    2. so have to learn the lower-bound and upper-bound indices and what left(top), mid and right(lowest) points matter,.
+    3. also done the recursive binary search algo, where the function takes 4 parameters (arr, t, l, r) and in function we call
+    the same function where we add the condtion left < right as usual and compute the mid value and as condition as in besic Binary search
+    we increate the left or right accordingly until the target not found.
+
+
+## Mistakes:
+    1. don't have the proper understanding of binary search edge cases and logic implementation - have to improve!
+
+
+
+## Tags:
+#binary search #debugging
