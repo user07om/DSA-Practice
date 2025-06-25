@@ -22,3 +22,27 @@ def BSAlgo(arr, target):
     return result
 
 print(BSAlgo([2, 4, 6, 8, 10], 3))
+
+
+"""
+class Solution(object):
+    def searchInsert(self, nums, target):
+        if len(nums) <= 1:
+            return 1 if nums[0] < target else 0
+        left, right = 0, len(nums)-1
+        result = 0
+
+        
+        while (left<right):
+            mid = (left+right)//2
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] < target:
+                left = mid + 1
+                result = left+1
+            else:
+                right = mid - 1
+                result = right+1 if target >= nums[0] else right
+
+        return result+1 if result==-1 else result
+"""

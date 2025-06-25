@@ -1,0 +1,18 @@
+## 💡 Daily Log Template
+# Date: 2025-06-25
+# Problem: sqrt(x)
+# Difficulty: Easy 
+# Language: Python, JS
+# Concepts: 
+# Time taken: ___ mins
+
+## Summary:
+
+## Pseudocode:
+
+## Learnings:
+
+## Mistakes:
+
+
+## Tags:

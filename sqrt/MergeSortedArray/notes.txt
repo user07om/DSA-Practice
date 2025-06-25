@@ -1,0 +1,24 @@
+
+## 💡 Daily Log Template
+# Date: 2025-06-25
+# Problem: MergeSortedArray
+# Difficulty: Easy 
+# Language: Python, JS
+# Concepts: 
+# Time taken: ___ mins
+
+## Summary:
+    inputs: 
+        1. two array num1, num2 in non-decreasing order
+        2. then len of arr also given m and n respectivly.
+    constraints:
+        1. the final result should be lenght of (m+n) of num1 array, 
+        2. the num2 and n should be ignored., not required.
+
+## Pseudocode:
+
+## Learnings:
+
+## Mistakes:
+
+## Tags:
