@@ -1,90 +1,135 @@
-# lets try the bubble sort algo -
-def bubble_sort(arr):
+def find_max(arr: list) -> int:
     """
-    what we actually do here.
-    1. we usually use the two iteration
-    2. outer loop will iterate over the arr except the last one.
-    3. inner loop will iterate over the arr - which starts from outer loop i+1 because we need the second element and i is the first index
-        till length of arr till the last index of array
-    4. in the inner loop we define the logic of swapping algo - its an pythonic way.
-    5. at the end we return the array.
+    1. break down into steps (decomposition)
+    2. start with assumption (pattern recognition) 
     """
-    n = len(arr)   #3
-    for i in range(n-1):  #till 2
-        for j in range(i+1, n):  #for the first iteration - 
-            if arr[i] > arr[j]:
-                arr[i], arr[j] = arr[j], arr[i]
+    max_val = arr[0] #assume first number is larget
+    for i in range(len(arr)):
+        # question your self, is my current assumption still valid
+        if arr[i] > max_val:
+            max_val = arr[i] #udpate/fix asuption if wrong.
+    
+    return max_val
+
+#print(find_max([3, 1, 33]))
+
+
+def find_rep(arr: list) -> None:
+    count: int = 1 
+
+    current: int = arr[0]
+    ele_is: int = 0
+    for i in range(len(arr)-1):
+        if arr[i] == current:
+            count += 1
+        else:
+            print(f"the count of {current} is {count}")
+            current = arr[i]
+            count = 1
+
+
+#find_rep([3, 2, 3, 9, 5, 4, 4, 4, 4])
+
+
+def sort_algo(arr: list) -> list:
+    for i in range(len(arr)):
+        smallest = i
+        for j in range(i+1, len(arr)):
+            if arr[j] < arr[smallest]:
+                smallest = j
+        arr[i], arr[smallest] = arr[smallest], arr[i]
     
     return arr
 
-
-def quick_sort(arr):
-    """
-    what is the quick sort algo -
-    1. it recursively call the same function as left and right
-    2. the base case of this function is, if len or arr < 1 return arr.
-    3. it takes any index from the element, propably the last index. and compare it to each element of the array.
-    4. recursion: 
-        - in the return statement we return the quick_sort(left) + [mid] + quick_sort(right).
-        - so the first quick_sort function takes the left side of the array, with corresponding first element as the pivot element
-        - and the second quick_sort function takes the right side of the array, with corresponding last element as the pivot element
-        - so left has the [1, 1] so when does it stop? but the pivot element is 1 right?
-    """
-    left = []
-    mid = []
-    right = []
-    if len(arr) <= 1:    #its an edge case which will stop the loop/recursive-call.
-        print(left, mid, right)
-        return arr
-    
-    piv = arr[-1]
-
-    #with compression.
-    #left = [x for x in arr if x < mid]   #why arr[x] < mid : because left side containes the lesser values 
-    #right = [x for x in arr if x > mid]   #and right side containes bigger vlaues.
-
-    #without compression.
-    for i in arr:
-        if i < piv:
-            left.append(i)
-        elif i > piv:
-            right.append(i)
+def bin_search(arr: list, t: int) -> list:
+    left, right = 0, len(arr)-1
+    while left <= right:
+        mid = (left+right)//2
+        if arr[mid] == t:
+            return mid
+        if arr[mid] < t:
+            left = mid+1
         else:
-            mid.append(i)
-
-    print(left, mid, right)
-
-    return quick_sort(left)+mid+quick_sort(right)
+            right = mid-1
+    return -1
 
 
+#pattern recogination training.
+def analyze_seq(arr: list) -> None:
+    #pattern 1: running sum
+    sum_up = 0
+    for i in range(len(arr)):
+        sum_up += arr[i]
+    print(f"sum-up of arr elements is {sum_up}")
 
-#print(bubble_sort([3, 1, 2]))
-#print(quick_sort([3, 1, 4, 2]))
+    for i in range(1, len(arr)):
+        if arr[i-1] > arr[i]:
+            arr[i-1], arr[i] = arr[i], arr[i-1] 
+        diff = arr[i] - arr[i-1]
+        print(f"difference between two elements {diff}")
 
-def sum_digit(n: int) -> int:
-    if n < 10:
-        return n
-
-    return n%10 + sum_digit(n//10) #call-stack[12345, 1234, 123, 12, 1]
-
-# print(sum_digit(9604094454))
-
-
-def rev_str(s: str) -> str:
-    if s <= 1:
-        return s
-
-    return s[-1] + rev_str(s[:-1])
-
-#like we have to think in reverse for recursive algos. lets try another one example.
-
-#palindrom check recursively.
-def pali_check(s: str) -> bool:
-    if len(s) <= 1:
-        print(s)
-        return True
-    return s[1] == s[-1] and pali_check(s[1:-1])
+    base = arr[0]
+    for i in range(len(arr)):
+        if arr[i] % base == 0:
+            print(f"{arr[i]} is multiple of {base}")
     
-name = "omkar"
-print(name[1:-1])
-print(pali_check(name))
+
+def list_dubli(arr: list) -> list: #---------------need to fix, what could be the issue is.
+    result = []
+    for i in range(len(arr)): #this outer loop 
+        for j in range(i+1, len(arr)): #inner loop for 
+            if arr[i] == arr[j]:
+                result.append(arr[j])
+    return result
+
+print(list_dubli([3, 3, 1, 2, 2, 8, 8]))
+
+
+#two sum problem, return the pairs of indices.
+
+def two_sum(arr: list, t: int) -> list:
+    seen = set()
+    result = []
+    for num in arr:
+        needed = t - num;
+        if needed in seen:
+            result.append([num, needed])
+        seen.add(num)
+    
+#     return result
+def two_sum_diff_apr(arr: list, t: int) -> list:
+    result = [] #contain the list of indices
+    seen = set()
+    for i in range(len(arr)):
+        compliment = t - arr[i]
+
+
+print(two_sum([3, 2, 4, 5, 7, 2], 9))
+
+
+#-------------------------------------------------------
+#two pointers and sliding window practice.
+#problem one - check if sum of target is present in the array.
+def two_sum_target(arr, target):
+    left, right = 0, len(arr)-1
+    while left<right:
+        current_sum = arr[left]+arr[right]
+        if current_sum == target:
+            return True 
+        elif current_sum < target:
+            left+=1
+        else:
+            right-=1 
+    return False
+
+
+#brute force approach --
+def twoSum_bforch(arr, target):
+    for i in range(len(arr)):
+        for j in range(i+1, len(arr)):
+            if arr[i]+arr[j]==target:
+                return True
+    
+    return False
+#example
+print("here we are", twoSum_bforch([1, 2, 3, 4, 5], 932))

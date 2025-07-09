@@ -10,7 +10,6 @@ def merge(nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         nums1[m+i] = nums2[i]
     
     nums1.sort()
-    print(nums1)
 
 
 nums1 = [1,2,3,0,0,0]
