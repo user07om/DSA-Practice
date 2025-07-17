@@ -133,3 +133,21 @@ def twoSum_bforch(arr, target):
     return False
 #example
 print("here we are", twoSum_bforch([1, 2, 3, 4, 5], 932))
+
+
+
+#dublicated from the array
+def count_distinct_value(arr):
+    if len(arr)<=1:
+        return -1
+    
+    write_i = 1
+    for i in range(1, len(arr)):
+        if arr[i]!=arr[i-1]:
+            arr[write_i] = arr[i]
+            write_i += 1
+    return write_i
+
+print(count_distinct_value([1, 1, 2]))
+        
+

@@ -1,14 +1,20 @@
 ## 💡 Daily Log Template
-# Date: 2025-06-25
-# Problem: sqrt(x)
+# Date: 2025-07-11
+# Problem: plusOne
 # Difficulty: Easy 
 # Language: Python, JS
 # Concepts: 
 # Time taken: ___ mins
 
 ## Summary:
+just increament the last digit of array by one and return the array.
+array would be in sorted order. and its an integer array.
 
 ## Pseudocode:
+very simple and first approch would be just, 
+    1. access the last digit by [::-1] 
+    2. increment it by 1 e.g. last_dig = [::-1]+1
+    3. tadada...!    lets-see...
 
 ## Learnings:
 
