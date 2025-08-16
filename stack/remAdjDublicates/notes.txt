@@ -1,0 +1,22 @@
+## 💡 Daily Log Template
+# Date: 2025-08-14
+# Problem: remove adjecent dublicates
+# Difficulty: Easy 
+# Language: Python, JS
+# Concepts: Stack
+# Time taken: ___ mins
+
+## Summary:
+points -
+  1. loop over the string.
+  2. assume the first index is dublicates
+  3. compare this with every index, if it 
+
+## Pseudocode:
+
+## Learnings:
+
+## Mistakes:
+
+
+## Tags:

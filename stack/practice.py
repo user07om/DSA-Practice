@@ -24,7 +24,7 @@ class Stack:   #BESIC STACK IMPLEMENTATION.
 
 
 # linked list stack based implementation.
-Class None:
+class Node:
     def __init__(self):
         self.value = value
         self.next = None
@@ -60,3 +60,38 @@ class StackLL:
 
     def size(self):
         return self.length
+
+
+print("Hello World! ----------------")
+
+# -- hash-set practice (create, add, remove and search)
+fruits = set()
+
+#add the item in the set (it will add randomely not it stack way!) 
+fruits.add("apple")
+fruits.add("banana")
+fruits.add("cherry")
+
+#remove the item from the set.
+#fruits.remove("apple")
+#fruits.discard("apple")
+
+#search in set.
+print(f"is apple is is set: {"appe" in fruits}")
+
+print(fruits)
+for fruit in fruits:
+    print(fruit)
+
+
+
+# set operations ----
+num1 = {1, 2, 3, 4}
+num2 = {3, 4, 5, 6}
+
+print(f"union {num1 | num2}")  # removes dublicates.
+print(f"intersection {num1 & num2}") # both has the same numbers
+print(f"differences {num1 - num2}")  # first set numbers that not invlolve in second one
+print(f"symatric differences {num1 ^ num2}")  #both set numbers which are unique.
+
+
