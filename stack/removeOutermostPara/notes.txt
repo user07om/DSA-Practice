@@ -1,0 +1,24 @@
+## 💡 Daily Log Template
+# Date: 2025-08-12
+# Problem: Remove OuterMost Para.
+# Difficulty: Easy 
+# Language: Python, JS
+# Concepts: Stack
+# Time taken: ___ mins
+
+## Summary:
+points -
+  1. remove outermost para, simply means - (()()), or ((())) or (()(()))
+      get only ()(), (()) and ()(()) which remove the above cover of it.
+  2. we can achive this via stack pattern, where we compare opening and closing para, 
+  3. we can set the hashmap of {')': '('} as hashmap.
+  4. loop over the str, and 
+
+## Pseudocode:
+
+## Learnings:
+
+## Mistakes:
+
+
+## Tags:

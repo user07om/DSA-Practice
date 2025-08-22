@@ -1,0 +1,25 @@
+
+## 💡 Daily Log Template
+# Date: 2025-08-11
+# Problem: reverse prefix of word 
+# Difficulty: Easy 
+# Language: Python, JS
+# Concepts: Stack
+# Time taken: ___ mins
+
+## Summary:
+points -
+  1. 0-index based word and a character ch, 
+  2. reverse portion/sagement of the word ends at first occurence of ch.
+  3. if character does not exists in the word then do nothing!
+
+## Pseudocode:
+first thing come to mind is, just loop over the word, found the ch, add till ch sagement to the 
+another list, reverse it. and merge with old one. by creating second new array/list.
+
+## Learnings:
+
+## Mistakes:
+
+
+## Tags:
