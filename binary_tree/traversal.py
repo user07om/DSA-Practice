@@ -95,3 +95,8 @@ def postOrder(root): #LRN
 
 inOrder(root)
 
+"""
+PreOrder -> NLR
+inOrder -> LNR
+postOrder -> LRN
+"""
