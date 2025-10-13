@@ -62,11 +62,12 @@ def count_true_in_row(matrix: List[List[bool]], row_index: int) -> int:
     matrix = [[True, False, True], [True, True, False]]
     count_true_in_row(matrix, 0) should return 2
     """
-    count = 0
-    for b in matrix[row_index]:
-        if b: count += 1
+    #count = 0
+    #for b in matrix[row_index]:
+        #if b: count += 1
 
-    return count
+    result = sum(matrix[row_index])
+    return result 
 
 def find_first_all_true_row(matrix: List[List[bool]]) -> int:
     """
@@ -77,10 +78,12 @@ def find_first_all_true_row(matrix: List[List[bool]]) -> int:
     matrix = [[True, False], [True, True], [False, True]]
     find_first_all_true_row(matrix) should return 1
     """
-    for v in matrix[1]:
-        if not v:
-            return -1 
-    return 1
+#    for v in matrix[1]:
+#        if not v:
+#            return -1 
+    if all(matrix[1]):
+        return 1
+    return -1
 
 def count_rows_with_any_false(matrix: List[List[bool]]) -> int:
     """
@@ -91,14 +94,19 @@ def count_rows_with_any_false(matrix: List[List[bool]]) -> int:
     count_rows_with_any_false(matrix) should return 1
     """
     count = 0
+#    for i in range(len(matrix)):
+#        for v in matrix[i]:
+#            if not v: 
+#                count += 1
+#                break
+    size = len(matrix[0])
     for i in range(len(matrix)):
-        for v in matrix[i]:
-            if not v: 
-                count += 1
-                break
-
-
+        s = sum(matrix[i]) 
+        if s != size:
+            count += 1
     return count
+
+
     
 
 
@@ -134,16 +142,15 @@ def get_main_diagonal(matrix: List[List[bool]]) -> List[bool]:
     matrix = [[True, False], [False, True]]
     get_main_diagonal(matrix) should return [True, True]
     """
-    size = len(matrix)-1
-    mid = size+1//2
-    for i in range(len(matrix)):
-        if matrix[0][0] and matrix[mid][mid] and matrix[size][size]:
-            return [matrix[0][0], matrix[mid][mid], matrix[size][size]]
-
-    return []
-
-
-
+#    size = len(matrix)-1
+#    mid = size+1//2
+#    for i in range(len(matrix)):
+#        if matrix[0][0] and matrix[mid][mid] and matrix[size][size]:
+#            return [matrix[0][0], matrix[mid][mid], matrix[size][size]]
+#    return []
+    n = len(matrix)
+    for i in range(n):
+        return matrix[i][i]
 
 
 
@@ -155,13 +162,16 @@ def get_anti_diagonal(matrix: List[List[bool]]) -> List[bool]:
     matrix = [[True, False], [False, True]]
     get_anti_diagonal(matrix) should return [False, False]
     """
-    size = len(matrix)-1
-    mid = size+1//2
-    for i in range(len(matrix)):
-        if  not matrix[size][0] and not matrix[mid][mid] and not matrix[0][size] :
-            return [matrix[size][0], matrix[mid][mid], matrix[0][size]]
-
-    return []
+#    size = len(matrix)-1
+#    mid = size+1//2
+#    for i in range(len(matrix)):
+#        if  not matrix[size][0] and not matrix[mid][mid] and not matrix[0][size] :
+#            return [matrix[size][0], matrix[mid][mid], matrix[0][size]]
+#
+#    return []
+    n = len(matrix)
+    for i in range(n):
+        return matrix[i][n-i-1]
 
 
 def are_diagonals_equal(matrix: List[List[bool]]) -> bool:
