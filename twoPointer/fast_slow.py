@@ -38,16 +38,78 @@ def findDubli_two(arr: List[int]) -> int:
 
 
 
+# REMOVE DUBLICATES.
+def rem_dubli(arr: List[int]) -> List[int]:
+    if len(arr) == 0: return 0 
+    i = 0
+    for j in range(1, len(arr)):
+        if arr[i] != arr[j]:
+            i += 1
+            arr[i] = arr[j]
+
+    while len(arr) != i+1:
+        arr.pop()
+
+    return arr
 
 
-print(findDubli_two([1, 3, 4, 2, 2, 2]))
+print(rem_dubli([1, 2, 2, 3, 4, 4, 5]))
 
+def rem_dubli_var1(arr):
+    i = 0
+    j = 0
+   
+    while j < len(arr):
+        start = j
+        while j < len(arr) and arr[j] == arr[start]:
+            j+=1
 
+        if j - start == 1:
+            arr[i] = arr[start]
+            i+=1
 
-#linked list related questions now.
+    return i
 
-
+def inst_val(arr: List[int], val: int) -> List[int]:
+    i = 0
+    n = len(arr)
     
+    while i < n:
+        if arr[i] == val:
+            arr[i] == arr[n-1]
+            n -= 1
+        else:
+            i += 1
+
+    return n
+
+print("Hey", inst_val([1, 2, 2, 3, 2], 2))
+
+
+def lets_see(arr, val):
+    i = 0
+    for j in range(len(arr)):
+        if arr[j] != val:
+            arr[i] = arr[j]
+            i += 1
+
+    del arr[i:]
+    
+    return arr
+
+print(lets_see([1, 2, 2, 3, 3], 2))
+
+def move_zero(arr):
+    i = 0;
+    for j in range(len(arr)):
+        if arr[j] != 0:
+            arr[i], arr[j] = arr[j], arr[i]
+            i += 1
+
+    return arr
+
+print(move_zero([2, 3, 0, 2, 0, 3]))
+
 
 
 

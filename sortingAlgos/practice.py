@@ -52,9 +52,22 @@ class Solution:
 
                 
 
+    def bubble_sort(self, arr: List[int]) -> List[int]:
+        if len(arr) <= 1:
+            return arr
+        
+        n = len(arr)
+        for i in range(n):
+            for j in range(i+1, n):
+                if arr[i] > arr[j]:
+                    arr[i], arr[j] = arr[j], arr[i]
+
+        return arr
+
 
 sol = Solution()
 print(sol.merge_sort([3, 2, 1]))
 print(sol.insertionSort([3, 2, 1]))
 print(sol.quick_sort([3, 2, 5, 1]))
+print(sol.bubble_sort([3, 2, 1]))
 

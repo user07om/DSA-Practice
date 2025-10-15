@@ -151,3 +151,21 @@ def count_distinct_value(arr):
 print(count_distinct_value([1, 1, 2]))
         
 
+def valid_pali(word: str) -> bool:
+    return word == word[::-1]
+
+print("check is pali or not ", valid_pali("omkar"))
+
+
+
+def valid_sentence_pali(sentence: str) -> bool:
+    sentence = "".join(e for e in sentence if e.isalnum()).lower()
+    print(sentence)
+    reversed_sentence = sentence[::-1]
+
+    return sentence == reversed_sentence
+
+print("check the sentence for pali: ", valid_sentence_pali("A man, a plan, a canal: Panama"))
+
+
+
