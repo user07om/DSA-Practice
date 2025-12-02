@@ -1,196 +1,107 @@
-def find_max(arr: list) -> int:
-    """
-    1. break down into steps (decomposition)
-    2. start with assumption (pattern recognition) 
-    """
-    max_val = arr[0] #assume first number is larget
-    for i in range(len(arr)):
-        # question your self, is my current assumption still valid
-        if arr[i] > max_val:
-            max_val = arr[i] #udpate/fix asuption if wrong.
-    
-    return max_val
-
-#print(find_max([3, 1, 33]))
+def is_sorted(arr):
+    return all(arr[x]<=arr[x+1] for x in range(len(arr)-1))
 
 
-def find_rep(arr: list) -> None:
-    count: int = 1 
+def distinct_values(arr):
+    return len(set(arr))
 
-    current: int = arr[0]
-    ele_is: int = 0
-    for i in range(len(arr)-1):
-        if arr[i] == current:
-            count += 1
+def prefix_sum(arr):
+    prefix = [0]
+    for x in arr:
+        prefix.append(arr[-1]+x)
+
+    return prefix[1:]
+
+print(prefix_sum([1, 2, 3]))
+
+
+
+def two_sum_sorted(arr, t):
+    l, r = 0, len(arr)-1 
+    while l<r:
+        s = arr[l]+arr[r]
+        if s == t:
+            return True
+        elif s < t:
+            l += 1
         else:
-            print(f"the count of {current} is {count}")
-            current = arr[i]
-            count = 1
+            r -= 1
+    return False
+
+print(two_sum_sorted([2, 3, 4, 5], 7))
 
 
-#find_rep([3, 2, 3, 9, 5, 4, 4, 4, 4])
+def max_in_win(arr, k):
+    res = []
+    for i in range(len(arr)-k+1):
+        res.append(max(arr[i:i+k]))
+    return res
+
+print(max_in_win([3, 4, 5, 8, 6, 3], 2))
 
 
-def sort_algo(arr: list) -> list:
-    for i in range(len(arr)):
-        smallest = i
-        for j in range(i+1, len(arr)):
-            if arr[j] < arr[smallest]:
-                smallest = j
-        arr[i], arr[smallest] = arr[smallest], arr[i]
-    
+
+def max_diff(arr):
+    min_val = arr[0]
+    max_diff = float('-inf')
+    for x in arr[1:]:
+        max_diff = max(max_diff, x - min_val)
+        min_val = min(min_val, x)
+
+    return max_diff
+
+print(max_diff([7, 1, 5, 3, 0]))
+
+def rot_arr(arr, d):
+    """
+    time O(n*d) worst case.
+    """
+    n = len(arr)
+    for i in range(d):
+        first = arr[0]
+        for j in range(n-1):
+            arr[j] = arr[j+1]
+        arr[n-1] = first
+    return arr
+print(rot_arr([1, 2, 3, 4], 2))
+
+def rot_arr_two(arr, d):
+    """
+    time linear and space also O(n) by using temp arr
+    """
+    n = len(arr)
+    d %= n
+    temp = [0]*n
+
+    for i in range(n-d):
+        temp[i] = arr[d+i] 
+
+    for i in range(d):
+        temp[n-d+i] = arr[i]
+
+    for i in range(n):
+        arr[i] = temp[i]
+
+    return arr
+print(rot_arr_two([1, 2, 3, 4], 2))
+
+def rot_arr_three(arr, d):
+    """
+    using recursion function as reverse
+    """
+    n = len(arr)
+    d %= n
+
+    reverse_a(arr, 0, d-1) #reversing the first d'th ele
+    reverse_a(arr, d, n-1) #reversing the d'th to n'th ele
+    reverse_a(arr, 0, n-1) #reversing the entire arr
+
     return arr
 
-def bin_search(arr: list, t: int) -> list:
-    left, right = 0, len(arr)-1
-    while left <= right:
-        mid = (left+right)//2
-        if arr[mid] == t:
-            return mid
-        if arr[mid] < t:
-            left = mid+1
-        else:
-            right = mid-1
-    return -1
+def reverse_a(arr, start, end):
+    while start < end:
+        arr[start], arr[end] = arr[end], arr[start]
+        start += 1
+        end -= 1
 
-
-#pattern recogination training.
-def analyze_seq(arr: list) -> None:
-    #pattern 1: running sum
-    sum_up = 0
-    for i in range(len(arr)):
-        sum_up += arr[i]
-    print(f"sum-up of arr elements is {sum_up}")
-
-    for i in range(1, len(arr)):
-        if arr[i-1] > arr[i]:
-            arr[i-1], arr[i] = arr[i], arr[i-1] 
-        diff = arr[i] - arr[i-1]
-        print(f"difference between two elements {diff}")
-
-    base = arr[0]
-    for i in range(len(arr)):
-        if arr[i] % base == 0:
-            print(f"{arr[i]} is multiple of {base}")
-    
-
-def list_dubli(arr: list) -> list: #---------------need to fix, what could be the issue is.
-    result = []
-    for i in range(len(arr)): #this outer loop 
-        for j in range(i+1, len(arr)): #inner loop for 
-            if arr[i] == arr[j]:
-                result.append(arr[j])
-    return result
-
-print(list_dubli([3, 3, 1, 2, 2, 8, 8]))
-
-
-#two sum problem, return the pairs of indices.
-
-def two_sum(arr: list, t: int) -> list:
-    seen = set()
-    result = []
-    for num in arr:
-        needed = t - num;
-        if needed in seen:
-            result.append([num, needed])
-        seen.add(num)
-    
-#     return result
-def two_sum_diff_apr(arr: list, t: int) -> list:
-    result = [] #contain the list of indices
-    seen = set()
-    for i in range(len(arr)):
-        compliment = t - arr[i]
-
-
-print(two_sum([3, 2, 4, 5, 7, 2], 9))
-
-
-#-------------------------------------------------------
-#two pointers and sliding window practice.
-#problem one - check if sum of target is present in the array.
-def two_sum_target(arr, target):
-    left, right = 0, len(arr)-1
-    while left<right:
-        current_sum = arr[left]+arr[right]
-        if current_sum == target:
-            return True 
-        elif current_sum < target:
-            left+=1
-        else:
-            right-=1 
-    return False
-
-
-#brute force approach --
-def twoSum_bforch(arr, target):
-    for i in range(len(arr)):
-        for j in range(i+1, len(arr)):
-            if arr[i]+arr[j]==target:
-                return True
-    
-    return False
-#example
-print("here we are", twoSum_bforch([1, 2, 3, 4, 5], 932))
-
-
-
-#dublicated from the array
-def count_distinct_value(arr):
-    if len(arr)<=1:
-        return -1
-    
-    write_i = 1
-    for i in range(1, len(arr)):
-        if arr[i]!=arr[i-1]:
-            arr[write_i] = arr[i]
-            write_i += 1
-    return write_i
-
-print(count_distinct_value([1, 1, 2]))
-        
-
-def valid_pali(word: str) -> bool:
-    return word == word[::-1]
-
-print("check is pali or not ", valid_pali("omkar"))
-
-
-
-def valid_sentence_pali(sentence: str) -> bool:
-    sentence = "".join(e for e in sentence if e.isalnum()).lower()
-    print(sentence)
-    reversed_sentence = sentence[::-1]
-
-    return sentence == reversed_sentence
-
-print("check the sentence for pali: ", valid_sentence_pali("A man, a plan, a canal: Panama"))
-
-
-# -------------- LEVEL ONE.
-# kadan's algo.
-
-# approach... one
-def kadan_one(arr):
-    res = 0
-    for i in range(len(arr)):
-        curr_sum = 0
-        for j in range(i, len(arr)):
-            curr_sum += arr[j]
-            res = max(res, curr_sum)
-
-    return res
-
-#approach... two
-def kadan_two(arr):
-    res = arr[0]
-    max_end = arr[0]
-    for i in range(len(arr)):
-        max_end = max(max_end+arr[i], arr[i])
-        res = max(res, max_end)
-
-    return res
-
-
-print(kadan_two([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
+print(rot_arr_three([1, 2, 3, 4], 2))
