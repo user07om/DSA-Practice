@@ -1,107 +1,74 @@
-def is_sorted(arr):
-    return all(arr[x]<=arr[x+1] for x in range(len(arr)-1))
+def rev_arr(arr):
+    l, r = 0, len(arr)-1
+    while l < r:
+        arr[l], arr[r] = arr[r], arr[l]
+        l += 1
+        r -= 1
 
+    return arr
 
-def distinct_values(arr):
-    return len(set(arr))
+print(rev_arr([1, 2, 3, 4]))
+# ---------------------------------------
 
-def prefix_sum(arr):
-    prefix = [0]
-    for x in arr:
-        prefix.append(arr[-1]+x)
-
-    return prefix[1:]
-
-print(prefix_sum([1, 2, 3]))
-
-
-
-def two_sum_sorted(arr, t):
-    l, r = 0, len(arr)-1 
-    while l<r:
-        s = arr[l]+arr[r]
-        if s == t:
-            return True
-        elif s < t:
-            l += 1
-        else:
-            r -= 1
-    return False
-
-print(two_sum_sorted([2, 3, 4, 5], 7))
-
-
-def max_in_win(arr, k):
-    res = []
-    for i in range(len(arr)-k+1):
-        res.append(max(arr[i:i+k]))
-    return res
-
-print(max_in_win([3, 4, 5, 8, 6, 3], 2))
-
-
-
-def max_diff(arr):
-    min_val = arr[0]
-    max_diff = float('-inf')
-    for x in arr[1:]:
-        max_diff = max(max_diff, x - min_val)
-        min_val = min(min_val, x)
+def v_dif(arr):
+    min_v = arr[0]
+    max_diff = 0
+    for i in range(1, len(arr)):
+        max_diff = max(max_diff, arr[i]-min_v)
+        min_v = min(min_v, arr[i])
 
     return max_diff
 
-print(max_diff([7, 1, 5, 3, 0]))
+print(v_dif([2,3,1,6,4]))
 
-def rot_arr(arr, d):
+
+#----------------------------------------
+
+def rot_arr(arr, k):
+    k %= len(arr)
+    return arr[-k:] + arr[:-k]
+
+arr = [1, 2, 3, 4, 5]
+print(arr[-2:])
+
+
+
+# -------------------------------------------------------------------------------
+#buy and sell stock once and get the max profit through out the day.
+
+def max_profit(prices):
     """
-    time O(n*d) worst case.
+    alternate way would be --
+    max_profit = max(max_profit, prices[i] - curr_price)
+    curr_price = min(curr_price, prices[i])
     """
-    n = len(arr)
-    for i in range(d):
-        first = arr[0]
-        for j in range(n-1):
-            arr[j] = arr[j+1]
-        arr[n-1] = first
-    return arr
-print(rot_arr([1, 2, 3, 4], 2))
+    max_profit = float("-inf")
+    curr_price = prices[0]
+    for i in range(1, len(prices)):
+        profit = prices[i] - curr_price
+        if profit > max_profit:
+            max_profit = profit
+        if prices[i] < curr_price:
+            curr_price = prices[i]
 
-def rot_arr_two(arr, d):
-    """
-    time linear and space also O(n) by using temp arr
-    """
-    n = len(arr)
-    d %= n
-    temp = [0]*n
+    return max_profit
 
-    for i in range(n-d):
-        temp[i] = arr[d+i] 
+#print("------------------", max_profit([7,1,5,3,6,4]))
 
-    for i in range(d):
-        temp[n-d+i] = arr[i]
 
-    for i in range(n):
-        arr[i] = temp[i]
+def unil_profit(prices):
+    profit = 0
+    for i in range(1, len(prices)):
+        if prices[i] > prices[i-1]:
+            profit += prices[i] - prices[i-1]
 
-    return arr
-print(rot_arr_two([1, 2, 3, 4], 2))
+    return profit
+#print("------------------", max_profit([1,4,3,4,5]))
 
-def rot_arr_three(arr, d):
-    """
-    using recursion function as reverse
-    """
-    n = len(arr)
-    d %= n
+# -------------------------------------------------------------------------------
 
-    reverse_a(arr, 0, d-1) #reversing the first d'th ele
-    reverse_a(arr, d, n-1) #reversing the d'th to n'th ele
-    reverse_a(arr, 0, n-1) #reversing the entire arr
 
-    return arr
 
-def reverse_a(arr, start, end):
-    while start < end:
-        arr[start], arr[end] = arr[end], arr[start]
-        start += 1
-        end -= 1
 
-print(rot_arr_three([1, 2, 3, 4], 2))
+
+
