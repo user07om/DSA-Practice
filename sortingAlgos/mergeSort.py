@@ -1,26 +1,34 @@
 from typing import List
 
-def merge_sort(arr: List[int]) -> List[int]:
-    if len(arr) <= 1:
-        return arr
-    mid = len(arr)//2
-    left = merge_sort(arr[:mid])
-    right = merge_sort(arr[mid:])
-    return merge(left, right)
+class Solution:
+    def merge_sort(self, arr: List[int]) -> List[int]:
+        if len(arr)<=1:
+            return arr
+
+        mid = len(arr)//2
+        left = self.merge_sort(arr[:mid])
+        right = self.merge_sort(arr[mid:])
+
+        return self.merge(left, right)
+
+    
+    def merge(self, left: List[int], right: List[int]) -> List[int]:
+        res = []
+        i = j = 0
+
+        while i < len(left) and j < len(right):
+            if left[i] <= right[j]:
+                res.append(left[i])
+                i += 1
+            else:
+                res.append(right[j])
+                j += 1
+
+        res.extend(left[i:])
+        res.extend(right[j:])
+
+        return res
 
 
-def merge(left: List[int], right: List[int]) -> List[int]:
-    result = []
-    i = j = 0
-    while i < len(left) and j < len(right):
-        if left[i] <= right[j]:
-            result.append(left[i])
-            i += 1
-        else:
-            result.append(right[j])
-            j += 1
-    result.extend(left[i:])
-    result.extend(right[j:])
-    return result
-
-print(merge_sort([3, 1, 4, 2]))
+sol = Solution()
+print(sol.merge_sort([3, 2, 1]))
