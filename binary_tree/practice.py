@@ -127,3 +127,11 @@ print("preOrder")
 ## traverse_postOrder
 traverse_postOrder(root)
 print("postOrder")
+
+
+
+
+# ---------------------------------------------------------
+
+#height of the tree.
+
