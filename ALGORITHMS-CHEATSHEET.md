@@ -746,7 +746,6 @@ def fib_memo(n, memo=None):
         return n
     memo[n] = fib_memo(n - 1, memo) + fib_memo(n - 2, memo)
     return memo[n]
-    return memo[n]
 ```
 
 ### Generate Permutations
