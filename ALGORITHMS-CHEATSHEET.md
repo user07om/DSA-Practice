@@ -478,8 +478,8 @@ def eval_rpn(tokens):
             elif token == '*':
                 stack.append(a * b)
             else:
-                # Truncate toward zero
-                stack.append(int(a / b) if a * b >= 0 else -int(-a / b))
+                # Truncate toward zero (LeetCode style)
+                stack.append(int(a / b))
         else:
             stack.append(int(token))
     
@@ -737,12 +737,15 @@ def fibonacci(n):
     return fibonacci(n - 1) + fibonacci(n - 2)
 
 # Optimized with memoization
-def fib_memo(n, memo={}):
+def fib_memo(n, memo=None):
+    if memo is None:
+        memo = {}
     if n in memo:
         return memo[n]
     if n <= 1:
         return n
     memo[n] = fib_memo(n - 1, memo) + fib_memo(n - 2, memo)
+    return memo[n]
     return memo[n]
 ```
 
