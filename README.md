@@ -1,6 +1,7 @@
 # 📚 DSA Practice Repository
 
 ## 🚀 Quick Links
+- **[🎯 QUICK START GUIDE](./QUICK-START-GUIDE.md)** - New to this repo? Start here! Learn how to use these resources effectively.
 - **[📖 ALGORITHMS CHEATSHEET](./ALGORITHMS-CHEATSHEET.md)** - Your go-to quick reference guide! Review this before every practice session.
 - **[💡 Problem-Solving Intuition](./intuition.md)** - Daily problem patterns and solutions.
 
