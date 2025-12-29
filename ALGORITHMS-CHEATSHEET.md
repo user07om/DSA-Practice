@@ -63,7 +63,7 @@ def rotate(arr, k):
 ### Find Max/Min in Array
 ```python
 def find_max_min(arr):
-    max_val = max_val = arr[0]
+    max_val = arr[0]
     min_val = arr[0]
     for num in arr:
         max_val = max(max_val, num)
