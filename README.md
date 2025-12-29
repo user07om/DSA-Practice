@@ -1,3 +1,11 @@
+# 📚 DSA Practice Repository
+
+## 🚀 Quick Links
+- **[📖 ALGORITHMS CHEATSHEET](./ALGORITHMS-CHEATSHEET.md)** - Your go-to quick reference guide! Review this before every practice session.
+- **[💡 Problem-Solving Intuition](./intuition.md)** - Daily problem patterns and solutions.
+
+---
+
 ## ✅ Before You Code (Problem Analysis)
 
 - [ ] 🔍 **Understand the Problem**
