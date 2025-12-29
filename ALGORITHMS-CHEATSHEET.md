@@ -478,7 +478,8 @@ def eval_rpn(tokens):
             elif token == '*':
                 stack.append(a * b)
             else:
-                stack.append(int(a / b))  # Truncate toward zero
+                # Truncate toward zero
+                stack.append(int(a / b) if a * b >= 0 else -int(-a / b))
         else:
             stack.append(int(token))
     
