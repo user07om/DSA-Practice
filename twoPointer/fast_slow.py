@@ -33,6 +33,12 @@ def findDubli_two(arr: List[int]) -> int:
         if slow == fast:
             break
 
+    slow = arr[0]
+    while slow != fast:
+        slow = arr[slow]
+        fast = arr[fast]
+
+
     return slow
 
 
@@ -41,49 +47,46 @@ def findDubli_two(arr: List[int]) -> int:
 # REMOVE DUBLICATES.
 def rem_dubli(arr: List[int]) -> List[int]:
     if len(arr) == 0: return 0 
-    i = 0
-    for j in range(1, len(arr)):
-        if arr[i] != arr[j]:
-            i += 1
-            arr[i] = arr[j]
+    slow = 0
+    for fast in range(1, len(arr)):
+        if arr[slow] != arr[fast]:
+            slow += 1
+            arr[slow] = arr[fast]
 
-    while len(arr) != i+1:
-        arr.pop()
-
-    return arr
+    return arr[:slow]
 
 
-print(rem_dubli([1, 2, 2, 3, 4, 4, 5]))
+print(rem_dubli([1, 2, 2, 3, 4, 4, 5]), "hey lets see")
 
 def rem_dubli_var1(arr):
-    i = 0
-    j = 0
+    slow = 0
+    fast = 0
    
-    while j < len(arr):
-        start = j
-        while j < len(arr) and arr[j] == arr[start]:
-            j+=1
+    while fast < len(arr):
+        start = fast
+        while fast < len(arr) and arr[fast] == arr[start]:
+            fast+=1
 
-        if j - start == 1:
-            arr[i] = arr[start]
-            i+=1
+        if fast - start == 1:
+            arr[slow] = arr[start]
+            slow+=1
 
-    return i
+    return slow
 
 def inst_val(arr: List[int], val: int) -> List[int]:
-    i = 0
+    slow = 0
     n = len(arr)
     
-    while i < n:
-        if arr[i] == val:
-            arr[i] == arr[n-1]
+    while slow < n:
+        if arr[slow] == val:
+            arr[slow] == arr[n-1]
             n -= 1
         else:
-            i += 1
+            slow += 1
 
     return n
 
-print("Hey", inst_val([1, 2, 2, 3, 2], 2))
+print("Hey", inst_val([1, 2, 2, 3, 2, 1], 2))
 
 
 def lets_see(arr, val):
@@ -109,6 +112,80 @@ def move_zero(arr):
     return arr
 
 print(move_zero([2, 3, 0, 2, 0, 3]))
+
+
+
+
+
+
+
+
+
+
+
+
+# -----------------------------------
+#lets do coding here.
+
+"""
+what does fast and slow pointers mean.
+    - the default fast is similar to i'th iteration.
+    - the slow pointer means it's the j but it's only
+    iterate when certain condition match.
+psudo code for fast and slow pointer.
+    iteration over the array as fast.
+        #do some work here.
+        condition met:
+            incraament the slow pointer by one.
+        outer loop as fast pointer will contnenue it's iteration.
+"""
+
+#remove dublicates and move zeros to the end.
+
+def remove_dubli(arr: list[int]) -> int:
+    slow = 0
+    for fast in range(1, len(arr)):
+        # some work here
+        if arr[fast] != 0:
+            slow += 1
+            arr[slow] = arr[fast]
+
+    return slow+1
+
+arr = [2, 1, 0, 1, 3, 0, 2]
+new_len = remove_dubli(arr)
+print(arr[:new_len], "hey yoo")
+
+
+
+#move zeros to the end.
+def move_zero_to_end(arr: list[int]) -> list[int]:
+    if len(arr) <= 1:
+        return arr
+
+    slow = 0 
+    for fast in range(1, len(arr)):
+        if arr[fast] != 0:
+            arr[fast], arr[slow] = arr[slow], arr[fast]
+            slow += 1
+
+    return arr
+
+print(move_zero_to_end([0, 1, 0, 3]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

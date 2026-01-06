@@ -23,7 +23,17 @@ Open **[ALGORITHMS-CHEATSHEET.md](./ALGORITHMS-CHEATSHEET.md)** and scan through
 Use **[README.md](./README.md)** checklist:
 
 - ✅ Understand the problem
-- ✅ Identify constraints
+- ✅ Identify constraints 
+n <= 12   - O(n!)
+n <= 25   - O(2^n)
+n <= 100  - O(n^4)
+n <= 500  - O(n^3)
+n <= 10^4 - O(n^2)
+n <= 10^6 - O(nlogn)
+n <= 10^8 - O(n)
+n > 10^8  - O(logn) or O(1)
+
+
 - ✅ Think through strategy
 - ✅ Write pseudocode
 
