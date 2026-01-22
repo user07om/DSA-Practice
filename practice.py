@@ -139,3 +139,18 @@ k = 2
 print(arr[-k:])
 print(arr[k:])
 
+
+
+#-----------------------------CRUD OPERATIONS------------------------------
+arr = [1, 2, 3, 4]
+n = len(arr)
+# array.......................... no pythonic way.
+
+#insert at end: arr.append(3)
+#insert at beginning
+for i in range(n, 0, -1):
+    print(arr[i])
+
+
+
+
