@@ -9,32 +9,83 @@ node3 = Node(3)
 
 node1.next = node2
 node2.next = node3
+node3.next = node1
 
 print(node1.data, node1.next.data, node2.next.data )
+print(f"---------{node1.data}, {node2.data}, {node3.data}")
+print(f"---------{node1.data}, {node1.next.data}, {node1.next.next.data}")
 
 
-# the linked list class for methods.
-class linkedList:
+#while node1:
+    #print(node1.data, end=" ")
+
+#last_node = node1
+#while last_node.next:
+#    if last_node is None:
+#        break
+#    print("yoo ", last_node.data)
+#    last_node = node1.next
+
+
+def print_node(node):
+    if node is None:
+        return
+    print(node.data, end="-")
+    print_node(node.next)
+
+#print_node(node1)
+
+print("------")
+
+#floye'ds cycle detection (fast and slow)
+# cycle detection.
+def cycle_det(node):
+    slow = node
+    fast = node
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+
+        if slow == fast:
+            return True
+
+    return False
+
+print(cycle_det(node1))
+
+print("------")
+
+
+# the linked list class class with first approach where insertion is O(n).
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def append(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+            return
+        
+        last_node = self.head
+        while last_node.next:
+            last_node = last_node.next
+        last_node.next = new_node
+
+    def display(self):
+        curr_node = self.head
+        while curr_node:
+            print(curr_node.data)
+            curr_node = curr_node.next
+
+
+# the linked list with secon approach where insertion is O(1)
+class linkedList_two:
     def __init__(self):
         self.head = None
         self.tail = None
 
-    # FIRST APPROCH WOULD BE LKE THIS!
     def append(self, data):
-        new_node = Node(data)   # initialize the new_node to Node class with data init.
-        if self.head is None:   # checks - if self.head is None then it will assign the new_node to it.
-            self.head = new_node
-            return
-
-        last_node = self.head   # if self.head is not None, it assing the self.head to last_node and iterate over it till None.
-        while last_node.next:   # breaks when last_node means self.head nexts becomes None
-            last_node = last_node.next  # till now it will assign the next points mean next node to last node to keep the race 
-        last_node.next = new_node  # once the break ends then last_node.next points to new_node 
-    # --------------------
-
-
-    # SECOND APPROCH WOULD BE!
-    def appendS(self, data):
         new_node = Node(data)
         if self.head is None:
             self.head = new_node
@@ -43,17 +94,54 @@ class linkedList:
             self.tail.next = new_node
             self.tail = new_node
 
+    def pre_append(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+
+        if self.tail is None:
+            self.tail = new_node
+
+    def insert_pos(self, idx, data):
+        if idx == 0:
+            self.pre_append(data)
+            return
+
+        new_node = Node(data)
+        curr_node = self.head
+        for _ in range(idx-1):
+            if curr_node is None:
+                print("position out of bounds")
+                return
+            
+            curr_node = curr_node.next
+        
+        new_node.next = curr_node.next
+        curr_node.next = new_node
+                
+
+
+
     def display(self):
-        current = self.head # its' same as above - we just have to reach the None means node.next, possible via while loop
-        while current:
-            print(current.data, end=" -> ")  # preint the current node data.
-            current = current.next  # and point the curren tnode to it's next node for continueing the loop.
-        print(None)
+        curr_node = self.head
+        while curr_node:
+            print(curr_node.data, end=" -> ")
+            curr_node = curr_node.next 
 
 
-linked = linkedList()
-linked.appendS(3)
-linked.appendS(4)
-linked.appendS(8)
-linked.display()
+#linked = LinkedList()
+#linked.append(9)
+#linked.append(4)
+#linked.append(8)
+#linked.display()
+
+
+linked_two = linkedList_two()
+linked_two.append(3)
+linked_two.append(2)
+linked_two.append(7)
+linked_two.pre_append(1)
+linked_two.insert_pos(2, 9)
+linked_two.display()
+
 

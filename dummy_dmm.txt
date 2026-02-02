@@ -1,0 +1,103 @@
+n = 5
+
+print("Pattern 1: Increasing numbers")  ---complet
+for row in range(n):
+    for col in range(1, row+1):
+        print(col, end=" ")
+    print()
+
+print("\nPattern 2: Square block of stars") --- complete
+for row in range(n):
+    for col in range(n):
+        print("*", end=" ")
+    print()
+
+print("\nPattern 3: Reverse decreasing stars")  --- complete
+for row in range(n):
+    for col in range(n-row):
+        print("*", end=" ")
+    print()
+
+print("\nPattern 4: Increasing stars")   
+for row in range(1, n+1):
+    for col in range(row):
+        print("*", end=" ")
+    print()
+
+range(1, 5+)
+
+print("\nPattern 5: Right aligned increasing")
+for row in range(n):
+    for col in range(n):
+        if col < n-row:
+            print(" ", end=" ")
+        else:
+            print("*", end=" ")
+    print()
+
+print("\nPattern 6: Right aligned decreasing")
+for row in range(n):
+    for col in range(n):
+        if col < row:
+            print(" ", end=" ")
+        else:
+            print("*", end=" ")
+    print()
+
+print("\nPattern 7: Pyramid (single-sided)")
+for row in range(n):
+    for col in range(n):
+        if col < n-row-1:
+            print(" ", end=" ")
+        else:
+            print("*", end=" ")
+    print()
+
+print("\nPattern 8: Full pyramid")
+for row in range(n):
+    for col in range(n-row-1):
+        print(" ", end=" ")
+    for col in range(2*row+1):
+        print("*", end=" ")
+    print()
+
+print("\nPattern 9: Diamond (full)")
+for row in range(n):
+    for col in range(n-row-1):
+        print(" ", end=" ")
+    for col in range(2*row+1):
+        print("*", end=" ")
+    print()
+for row in range(n-2, -1, -1):
+    for col in range(n-row-1):
+        print(" ", end=" ")
+    for col in range(2*row+1):
+        print("*", end=" ")
+    print()
+
+print("\nPattern 10: Hollow square")
+for row in range(n):
+    for col in range(n):
+        if row == 0 or row == n-1 or col == 0 or col == n-1:
+            print("*", end=" ")
+        else:
+            print(" ", end=" ")
+    print()
+
+print("\nPattern 11: Hollow triangle")
+for row in range(n):
+    for col in range(row+1):
+        if col == 0 or col == row or row == n-1:
+            print("*", end=" ")
+        else:
+            print(" ", end=" ")
+    print()
+
+print("\nPattern 12: X pattern")
+for row in range(n):
+    for col in range(n):
+        if col == row or col == (n-row-1):
+            print("*", end=" ")
+        else:
+            print(" ", end=" ")
+    print()

@@ -135,8 +135,13 @@ for i in range(len(arr)):
 
 print(f"the frequency of {val} is {count}")
 
+<<<<<<< HEAD
 
 
+=======
+#---------------remove dublicates from an arr only if an ele is consicutive.
+arr_two = [1, 2, 3, 3, 2, 1] #this not work!
+>>>>>>> e0ef0dc (arr operations)
 arr = [1, 1, 2, 2, 3, 3] #this works! dublicates in consicutive order.
 print(f"\nremove the dublicate elements from an {arr}")
 j = 0
@@ -146,6 +151,13 @@ for i in range(1, len(arr)):
         arr[j] = arr[i]
 
 print(f"removed dublicates: {arr[:j+1]}")
+
+for i in range(len(arr_two)):
+    for j in range(i+1, len(arr_two)):
+        if arr_two[i] == arr_two[j]:
+            arr_two[i], arr_two[j] = arr_two[j], arr_two[i]
+
+print(arr_two, "yoooo")
 
 
 #---------------left rotaion by one and also with k.
@@ -205,7 +217,7 @@ for i in range(len(arr)-1):
         flag = False
 
 print(f"\nthe given array is sorted or not: {flag}")
-        
+
 
 #---------------linear search + delete element.
 arr = [1, 2, 3, 4]
