@@ -74,13 +74,18 @@ print(long_sub_s("bbbbb"))
 #longest substring with atmost k distinct characters.
 def long_str(s: str, k: int) -> int:
     left = 0
-    max_len = float("-inf")
-    seen = set()
+    max_len = 0
+    seen = {}
     for right in range(len(s)):
+        char = s[right]
+        seen[char] = seen.setdefault(char, 0)+1
 
-        seen.add(s[right])
+        
         while len(seen) > k:
-            seen.remove(s[left])
+            char_left = s[left]
+            seen[char_left] -= 1
+            if seen[char_left] == 0:
+                del seen[char_left]
             left += 1
 
         max_len = max(max_len, (right-left)+1)
@@ -88,5 +93,5 @@ def long_str(s: str, k: int) -> int:
     return max_len
 
 
-print("fuckkkk...", long_str("eceba", 2))
+print("fuckkkk...", long_str("aaaa", 1))
 

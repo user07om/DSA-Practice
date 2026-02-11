@@ -8,7 +8,7 @@ Classic questions for opposite questions.
 # finding pair with most water is simplest
 def two_sum_sorted(arr: list[int], target: int) -> list[int]:
     """
-    as opposite pointers/ref we have to add those two and compare with the target
+    as opposite pointers/ref we add those two and compare with the target
     if it's equal then return it's idx else default [0, 0]
     """
     left: int = 0
@@ -55,8 +55,8 @@ def isPali(s: str) -> bool:
     return True
 
 def isPali_copression(s: str) -> bool:
-    s = "".join(c.lower() for c in s if c.isalnum())
-    return s == s[::-1]
+    ns = "".join(c.lower() for c in s if c.isalnum())
+    return ns == s[::-1].lower()
 
 print(isPali("A man, a plan, a canal: Panama"))
 print(isPali_copression("A man, a plan, a canal: Panama"))
@@ -71,7 +71,7 @@ def two_sum_pra(arr: list[int], target: int) -> list[int]:
     """
     we solve this by two pointers patterns - Opposite.
     it's only work effeciently if the array is sorted.
-    we can track down from two pointers and take it's sum and compare with target.
+    we can track a two pointers and take it's sum and compare with the target.
     """
     left: int = 0
     right: int = len(arr)-1
@@ -122,25 +122,32 @@ def three_sum(arr: list[int]) -> list[int]:
     arr.sort()
     total = 0
     res = []
-    for i in range(len(arr)):
+    for i in range(len(arr)-2):
+        if i > 0 and arr[i] == [i-1]:
+            continue
+
         left: int = i+1
-        right: int = len(arr)-1
+        right: int = len(arr)-2
+        target = -arr[i]
+
+
         while left < right:
-            total = arr[i]+arr[left]+arr[right]
-            if total == 0:
+            curr_sum = arr[left]+arr[right]
+            if curr_sum == target:
                 res.append([arr[i], arr[left], arr[right]])
-                left += 1
-                right -= 1
 
                 while left < right and arr[left] == arr[left-1]:
                     left += 1
                 while left < right and arr[right] == arr[right+1]:
                     right -= 1
 
-            elif total < 0:
-                right -= 1
-            else:
                 left += 1
+                right -= 1
+
+            elif curr_sum < target:
+                left += 1
+            else:
+                right -= 1
 
     return res
 
