@@ -100,12 +100,11 @@ def three_sum(arr: list[int]) -> list[int]:
 
         left: int = i+1
         right: int = len(arr)-2
-        target = -arr[i]
 
 
         while left < right:
-            curr_sum = arr[left]+arr[right]
-            if curr_sum == target:
+            curr_sum = arr[i]+arr[left]+arr[right]
+            if curr_sum == 0:
                 res.append([arr[i], arr[left], arr[right]])
 
                 while left < right and arr[left] == arr[left-1]:
@@ -116,7 +115,7 @@ def three_sum(arr: list[int]) -> list[int]:
                 left += 1
                 right -= 1
 
-            elif curr_sum < target:
+            elif curr_sum < 0:
                 left += 1
             else:
                 right -= 1
