@@ -87,7 +87,7 @@ def contain_most_water(arr: list[int]) -> int:
 print(contain_most_water([0,2]))
 
 
-#THREE SUM - SORTED ARRAY.
+#THREE SUM - SORTED ARRAY.a require"cmp.utils.feedkeys".run(871)
 #the three sum in sorted array means -
 #any distinct elements from sorted array and it's sum shoudl be eqaul to 0.
 def three_sum(arr: list[int]) -> list[int]:
@@ -123,3 +123,36 @@ def three_sum(arr: list[int]) -> list[int]:
     return res
 
 print(three_sum([-1, 0, 1, 2, -1, -4]))
+
+
+def sortedSquars(arr: list[int]) -> list[int]: #bruteforce apporach 
+    res: list[int] = []
+    for x in arr:
+        square = x**2
+        res.append(square)
+
+    res.sort()
+    print("bruteforce apporach: ", res)
+
+sortedSquars([-4, -1, 0, 3, 10])
+
+def sortedSquarsOptimal(arr: list[int]) -> list[int]:
+    res = [0]*len(arr)
+    left = 0
+    right = len(arr)-1
+    pos = len(arr)-1
+
+    while left <= right:
+        if abs(arr[left]) > abs(arr[right]):
+            res[pos] = arr[left]**2
+            left += 1
+        else:
+            res[pos] = arr[right]**2
+            right -= 1
+        pos -= 1
+
+    return res
+
+
+print("the optimal approach for the squares arr: ", sortedSquarsOptimal([-4, -1, 0, 3, 10]))
+

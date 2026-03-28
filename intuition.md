@@ -32,7 +32,33 @@ def rotate_right(arr, k):
     return arr[-k:] + arr[:-k]
 ```
 
-## 4. All pairs with sum = k
+#reverse function approach...
+
+'''
+def right_rot(arr, k):
+    n = len(arr)
+    k %= n
+    rev(arr, 0, n-1)
+    rev(arr, 0, k-1)
+    rev(arr, k, n-1)
+    return arr
+
+def left_rot(arr, k):
+    n = len(arr)
+    k %= n
+    rev(arr, 0, n-1) -> [5, 4, 3, 2, 1]
+    rev(arr, 0, n-k-1) -> [3, 4, 5, 2, 1]
+    rev(arr, n-k, n-1) -> [3, 4, 5, 1, 2]
+
+def rev(arr, left, right):
+    while left < right:
+        arr[left], arr[right] = arr[right], arr[left]
+        left += 1
+        right -= 1
+    return arr
+'''
+
+## 4. All pairs with sum = k, it's like two sum. but we just have to add the pairs to tuple.
 
 ```python
 def all_pairs_sum(arr, k):
@@ -73,6 +99,16 @@ def suffix_sum(arr):
     for i in range(n-2, -1, -1):
         suff[i] = suff[i+1] + arr[i]
     return suff
+```
+
+```
+def prefix_sum(arr):
+    n = len(arr)
+    pref = [0]
+    for num in arr:
+        pref.append(pref[-1]+num)
+    
+    return pref
 ```
 
 ## 7. Frequency count
@@ -483,3 +519,4 @@ def min_platforms(arrivals, departures):
             j += 1
     return max_p
 ```
+
