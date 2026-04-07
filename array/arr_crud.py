@@ -15,40 +15,6 @@ print(f"inserted at first -> {arr}")
 
 #-------------------------------------------------------
 
-#insertion at position: ------------
-arr = [1, 2, 3]
-old_arr = arr[:]
-one_arr = arr[:]
-
-idx = 1
-val = 4
-arr.append(0)
-for i in range(idx, len(arr)-1):
-    arr[i] = arr[i+1]
-
-arr[idx] = val
-
-new_arr = [0]*(len(old_arr)+1)
-for i in range(len(new_arr)):
-    if i < idx:
-        new_arr[i] = old_arr[i]
-    elif i == idx:
-        new_arr[i] = val
-    else:
-        new_arr[i] = old_arr[i-1]
-
-print(new_arr, "hoorra")
-print(f"inserted {val} at index {idx}: {arr}")
-
-one_arr.append(0)
-temp = val
-for i in range(idx, len(one_arr)):
-    curr_idx = one_arr[i]
-    one_arr[i] = temp 
-    temp = curr_idx
-
-print(one_arr, "yummy")
-
 #-------------------------------------------------------
 # UPDATE -> update not required to shift element, so we can done by arr.insert(idx, val)
 #-------------------------------------------------------
@@ -73,6 +39,7 @@ for first position and specific idx and val, we need to iterate over an array.
 #--------------deleteion at first position.
 for i in range(len(arr)-1):
     arr[i] = arr[i+1]
+
 
 arr.pop()
 print(f"deleted the first index: {arr}")
@@ -445,3 +412,50 @@ print(arr, "changed array")
 arr = [1, -2, 3, -4, 5, -6] #output should be -> [1, -2, 3, -4, 5, -6]
 
 
+#==========================================================================================================================================================
+
+print("==========================================================================================================================================================")
+#insert elemet at verious position
+# insert at beginning
+arr = [1, 2, 3, 4, 5]
+val = 9
+arr.append(0)
+for i in range(len(arr)-1, 0, -1):
+    arr[i] = arr[i-1]
+arr[0] = val
+
+#insert at position: there are many variations:
+arr = [1, 2, 3, 4, 5]
+val = 9; idx = 2
+arr.append(0)
+n = len(arr)
+
+print(arr)
+for i in range(n-1, -1, -1):
+    arr[i] = arr[i-1]
+    if i == idx:
+        arr[idx] = val
+        break
+print(arr)
+
+arr = [1, 2, 3, 4, 5]
+arr.append(0)
+temp = val
+for i in range(idx, len(arr)):
+    curr_val = arr[i]
+    arr[i] = temp
+    temp = curr_val
+
+print(arr)
+
+arr = [1, 2, 3, 4, 5]
+new_arr = [0]*(len(arr)+1)
+for i in range(len(new_arr)):
+    if i < idx:
+        new_arr[i] = arr[i]
+    elif i == idx:
+        new_arr[i] = val
+    else:
+        new_arr[i] = arr[i-1]
+
+print(new_arr)

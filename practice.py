@@ -367,6 +367,7 @@ def subarrSum_Opti(nums, k):
 
 
 #-----------------------------CRUD OPERATIONS------------------------------
+<<<<<<< HEAD
 arr = [1, 2, 3, 4]
 n = len(arr)
 # array.......................... no pythonic way.
@@ -609,3 +610,5 @@ print(trapingRain([4, 2, 0, 3, 2, 5]))
 
 
 
+=======
+>>>>>>> a8b1def392eb97d3937765b910395f34e0108df6
