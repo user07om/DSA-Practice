@@ -264,6 +264,25 @@ def secLarge(arr):
 
 print(secLarge([1, 2, 3, 4]))
 
+arr = [4, 9, 1, 5, 6, 8]; k=3
+def kthLargest(arr, k):
+    for _ in range(k-1):
+        max_v = arr[0]
+        key = 0
+        for i in range(len(arr)):
+            if arr[i] > max_v:
+                max_v = arr[i]
+                key = i
+        
+        arr.pop(key)
+
+
+    return max(arr)
+
+
+print(kthLargest(arr, k), "kth largest")
+
+
 def countFreq(arr):
     freq = {}
     for x in arr:
@@ -293,12 +312,169 @@ def isSorted(arr):
 
 print(isSorted([1, 3, 5, 4]))
 
-def mergeArr(arr1, arr2):
-    i = 0
-    j = 0
+#def mergeArr(arr1, arr2):
+    #i = 0
+    #j = 0
 
 
-num1 = [1, 2, 3]; num2 = [1, 2, 3, 4, 5]
-if len(num1) > len(num2): n = len(num1)
-else: n = len(num2)
-print(n)
+#num1 = [1, 2, 3]; num2 = [1, 2, 3, 4, 5]
+#if len(num1) > len(num2): n = len(num1)
+#else: n = len(num2)
+#print(n)
+
+
+#arr = [1, 2, 3, 4] # Output: [1, 3, 6, 10]
+#res = []
+#for i in range(len(arr)+1):
+    #res.append(sum(arr[:i]))
+#print(res)
+
+arr = [1, 2, 3, 4] # Output: [1, 3, 6, 10]
+inputArr = [1, 2, 3, 4]
+def prefSum(arr):
+    arr.append(0)
+    for i in range(len(arr)-1, 0, -1):
+        arr[i] = arr[i-1]
+    arr[0] = 0
+
+    for i in range(1, len(arr)):
+        arr[i] = arr[i-1] + arr[i]
+
+    return arr
+
+def rangeSum(pre, left, right):
+    rightSum = pre[right]
+    leftSum = pre[left] if left > 0 else 0
+    return rightSum - leftSum
+
+def targetSum(arr, target):
+    left = 0
+    right = len(arr)-1
+    ans = []
+    while left < right:
+        total = arr[right] - arr[left]
+        if total > target:
+            right -= 1
+        elif total < target:
+            left += 1
+        else:
+            ans = inputArr[left:right]
+            left += 1
+            right -= 1
+
+
+    return ans
+
+prefSum(arr)
+print(arr, inputArr)
+print(rangeSum(arr, -1, 2))
+print(targetSum(arr, 6))
+
+
+arr = [5, 4, -1, 7, 8]
+#arr = [1, 2, 3, 4, 5]
+max_v = float("-inf")
+for i in range(len(arr)):
+    for j in range(i, len(arr)+1):
+        for k in range(i, j):
+            #res.append(sum(arr[i:j]))
+            print(arr[k], end=" ")
+        print(" -- ", sum(arr[i:j]))
+        if sum(arr[i:j]) > max_v:
+            max_v = sum(arr[i:j])
+    print()
+
+
+print(max_v, "---------------------------------------------------")
+
+
+def equiIdx(arr):
+    ans = -1
+    for i in range(1, len(arr)-1):
+        is_valid = sum(arr[:i]) == sum(arr[i+1:])
+        if is_valid:
+            ans = i
+            break
+
+    return arr[ans]
+
+print(equiIdx([3, 1, 5, 2, 2]))
+arr = [3, 1, 5, 2, 2]
+def equilibreumIdx(arr):
+    for i in range(1, len(arr)):
+        arr[i] = arr[i-1] + arr[i]
+
+
+equilibreumIdx(arr)
+print(arr)
+    
+
+
+def validPali(s):
+    s = s.lower()
+    l = 0
+    r = len(s)-1
+    while l < r:
+        while l < r and not s[l].isalnum():
+            l += 1
+
+        while l < r and not s[r].isalnum():
+            r -= 1
+
+        if s[l] != s[r]:
+            return False
+
+        l += 1
+        r -= 1
+
+    return True
+
+
+print(validPali("A man, a plan, a canal: Panama"))
+
+
+arr = [-4,-1,0,3,10] 
+res = []
+def SquarSort(arr):
+    left = 0
+    right = len(arr)-1
+    while left <= right:
+        if abs(arr[left]**2) > abs(arr[right]**2):
+            res.append(abs(arr[left]**2))
+            left += 1
+        else:
+            res.append(abs(arr[right]**2))
+            right -= 1
+
+    return res
+
+print(SquarSort(arr))
+
+
+arr = [1, 1, 1, 2, 2, 3, 3]
+def remDubliCates(arr):
+    slow = 2
+    for fast in range(2, len(arr)):
+        if arr[fast] != arr[slow-2]:
+            arr[slow] = arr[fast]
+            slow +=1
+
+    return arr[:slow]
+print(remDubliCates(arr))
+
+res = []
+def remDubliBrute(arr): #bruteforce approach:
+    res.append(arr[0])
+    res.append(arr[1])
+
+    prev = 1
+    for read in range(2, len(arr)):
+        while arr[read] != arr[prev]:
+            res.append(read)
+            prev = read 
+        
+        continue
+
+
+    return res
+print(remDubliBrute(arr), "something is wrong!")
