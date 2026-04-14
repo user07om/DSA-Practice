@@ -50,7 +50,6 @@ opr_three = InsertPos.extra_space_way(2, 9)
 print(opr_three, " operations----------------------------------------------> ")
 
 
-
 class DeleteVal:
     """
         - delete first element 
@@ -235,7 +234,6 @@ class PartitionProblems:
 
         return self.arr
 
-
 #PartProblem = PartitionProblems([1, 1, 2, 2, 3, 3]) 
 PartProblem = PartitionProblems([1, 0, 0, 1, 2, 0]) 
 #PartProblem = PartitionProblems([1, -2, 3, -4, 5, 1, 5, -2]) 
@@ -299,7 +297,7 @@ class QueryIT:
                 quick_select(arr, left, p_idx-1)
                 quick_select(arr, p_idx+1, right)
 
-            return 
+        return quick_select(arr, k, len(self.arr)-1)
 
     def kth_larget_bruteforce(self, k):
         for _ in range(k-1): #time complexity is O(k*n)
@@ -312,6 +310,7 @@ class QueryIT:
             self.arr.pop(key)
         return max(self.arr)
 
+<<<<<<< HEAD
 
 
 
@@ -319,6 +318,11 @@ query_it = QueryIT([1, 129, 2, 75, 92, 3, 1, 7])
 #opr = query_it.second_largest()
 #opr = query_it.kth_bruteforce(2)
 opr = query_it.kth_larget_bruteforce(2)
+=======
+query_it = QueryIT([32, 129, 9, 1, 2, 75, 92, 3, 7])
+#opr = query_it.second_largest()
+opr = query_it.kth_bruteforce(4)
+>>>>>>> b591376 (array crud operations)
 print(opr, " -----------------------------  the kth largest value!")
 
 
