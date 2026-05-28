@@ -161,3 +161,131 @@ for _ in range(k+1):
 print(max(arr), " it k'th largest element")
 print(larger, " it k'th largest element")
 print(arr)
+
+
+#ok -----------------------------------------------------------------
+def pref_sum(arr):
+    for i in range(1, len(arr)):
+        arr[i] += arr[i-1]
+        
+    return arr
+
+print("prefix sum: ", pref_sum([1, 2, 3, 4]))
+
+def range_sum_query(arr, s, e):
+    res = 0
+    for i in range(len(arr)-1):
+        if i >= s and i <= e+1:
+            res += arr[i]
+
+    return res
+
+print("range sum query: ", range_sum_query([2, 4, 5, 7, 1], 1, 3))
+
+
+def find_pivot(arr):
+    res = 0
+    left, right = 0, len(arr)-1
+    leftSum, rightSum = arr[left], arr[right]
+    while left < right:
+        if leftSum < rightSum:
+            left += 1
+            leftSum += arr[left]
+        elif leftSum > rightSum:
+            right -= 1
+            rightSum += arr[right]
+        else:
+            left += 1
+            right -= 1
+            res = left 
+
+    return res, leftSum, rightSum
+
+def find_pivot_two(arr): #second approach similar to simple logic:
+    totalSum = sum(arr)
+    leftSum = 0
+
+    for i in range(len(arr)):
+        """
+        we decreamenting the rightSum by substracting the leftSum and current element.
+        after the condition we increament the leftSum by current element.
+        """
+        rightSum = totalSum - leftSum - arr[i]
+
+        if leftSum == rightSum:
+            return i, leftSum, rightSum
+
+        leftSum += arr[i]
+
+    return -1
+
+print(find_pivot([1, 7, 3, 6, 5, 6]))
+print(find_pivot_two([1, 7, 3, 6, 5, 6]))
+
+def count_even_prefix(arr):
+    count = 0
+    for i in range(1, len(arr)):
+        arr[i] += arr[i-1]
+        if arr[i]%2==0: count += 1
+
+    return count
+
+print(count_even_prefix([1, 2, 3, 4]))
+
+
+def subarr_eq(arr, k):
+    currSum = 0
+    left = 0
+    for right in range(len(arr)):
+        currSum += arr[right]
+        while currSum > k and left <= right:
+            currSum -= arr[left]
+            left += 1
+        if currSum == k:
+            return left, right
+
+    return left, right
+print(subarr_eq([1, 2, 3, 7, 5], 12))
+
+def subarr_eq_two(arr, k):
+    totalSum = sum(arr)
+
+
+    for i in range(len(arr)):
+        remainSum = totalSum - arr[i]
+        if remainSum == k:
+            return True
+    
+    return False
+
+print(subarr_eq_two([1, 2, 3, 7, 5], 12))
+
+def left_right_Sdiff(arr):
+    res = [0]*len(arr)
+    for i in range(len(arr)):
+        res[i] = abs(sum(arr[i+1:]) - sum(arr[:i]))
+
+    #res[-1] = sum(arr[:]) - arr[-1]
+    return res
+
+print("left, right sum pivot: ", left_right_Sdiff([10, 4, 8, 3]))
+[10, 3, 8, 4]
+  #..........
+  #..........
+[15, 1, 11, 22]
+
+def subarr_eq_k(arr, k):
+    left = 0
+    curr_s = 0
+    res = 0
+    for right in range(len(arr)):
+        curr_s += arr[right]
+        while curr_s > k and left < right:
+            curr_s -= arr[left]
+            left += 1
+        if curr_s == k:
+            res += 1
+
+    return res
+
+print(subarr_eq_k([1, 1, 1], 2))

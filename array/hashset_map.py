@@ -393,8 +393,8 @@ hp_freq = Hash_Frequency(arr)
 #p3 = hp_freq.most_freq_n()
 #p4 = hp_freq.is_anagram_one(st2)
 #p5 = hp_freq.count_distinct()
-p6 = hp_freq.freq_k(2)
-print("Yoo freq most_freq", p6)
+#p6 = hp_freq.freq_k(2)
+#print("Yoo freq most_freq", p6)
 
 # Set Programs.....
 arr = [100, 4, 200, 3, 1, 2]
@@ -426,4 +426,85 @@ def MathDig(n): #algorithmic - maths use.
 print(SingleDig(19))
 print(MathDig(19))
 
+# --------------------------------------------------------------
+
+
+class HashMap:
+    def __init__(self):
+        ...
+
+    def countDubli(self, arr):
+        seen = set() #we can solve this by freq count. 
+        for x in arr:
+            if x in seen:
+                return True
+            seen.add(x)
+        return False
+
+    def majEle(self, arr):
+        cnt = 0
+        candidate = 0
+        for x in arr:
+            if cnt == 0:
+                candidate = x
+
+            if x == candidate:
+                cnt += 1
+            else: cnt -= 1
+        return candidate
+
+    def two_sum(self, arr, target):
+        freq = {}
+        for i in range(len(arr)):
+            comp = target - arr[i]
+            if comp in freq:
+                return [freq[comp], i]
+
+            freq[arr[i]] = i
+
+        return [0, 0]
+
+    def grpAnagrams_sorted(self, strs):
+        """
+        there are two ways to sort this question, using sort and ord(). 
+         - sorted() takes m*nlogn TC where m is strs lenght and nlogn is word length sorted tc.
+        """
+        res = {}
+        for word in strs:
+            key = "".join(sorted(word))
+            if key not in res:
+                res[key] = []
+            res[key].append(word) 
+
+        return list(res.values())
+
+    def grpAnagrams_ord(self, strs):
+        """
+        there are two ways to sort this question, using sort and ord(). 
+         - ord() takes m*n where m is strs len and n is word len.
+        """
+        res = {}
+        for word in strs:
+            count = [0]*26
+            for c in word:
+                count[ord(c)-ord('a')] += 1
+
+            if count not in res:
+                res[count] = []
+            res[count].append(word)
+
+        return list(res.values())
+
+
+
+def k_freq_ele(arr):
+    count = Counter(arr) #frequency of each element in the array.
+    freq = [[] for _ in range(len(arr)+1)]
+
+    for key, val in count.items():
+        freq[val].append(key)
+
+    print(freq)
+
+k_freq_ele([2, 3, 4, 4, 5, 5, 5, 4, 6, 6])
 

@@ -104,8 +104,6 @@ print(third, " -----------------------------------> omkar here i'm")
 
 
 
-
-
 class PartitionProblems:
     """in the partition problem the zero pattern is also there but it's okay! we're not adding in this class"""
     def __init__(self, arr):
@@ -276,7 +274,7 @@ class QueryIT:
         return ans
     
     #kth means the first, second or third.. etc. we gonna try different approaches. then we'll move to optimal one.
-    def kth_bruteforce(self, k):
+    def kth_largest(self, k):
         n = len(self.arr)
         self.arr.sort()
         return self.arr[n-k]
@@ -303,70 +301,26 @@ class QueryIT:
 
             return 
 
+    def kth_larget_bruteforce(self, k):
+        for _ in range(k-1): #time complexity is O(k*n)
+            max_v = self.arr[0]
+            key = 0
+            for i in range(len(self.arr)):
+                if self.arr[i] > max_v:
+                    max_v = self.arr[i]
+                    key = i
+            self.arr.pop(key)
+        return max(self.arr)
 
 
-def partition(arr: list[int], left: int, right: int) -> int:
-    idx = left-1; pivot = arr[right] 
-    for i in range(left, right):
-        if arr[i] <= pivot:
-            idx += 1
-            arr[i], arr[idx] = arr[idx], arr[i]
-
-    idx += 1
-    print(idx)
-    arr[right], arr[idx] = arr[idx], arr[right]
-
-    return idx
-
-def quick_sort(arr, left, right):
-    if left <= right:
-        p_idx = partition(arr, left, right) #get the idx 
-        quick_sort(arr, left, p_idx-1)
-        quick_sort(arr, p_idx+1, right)
-
-    return arr
-
-    
-arr = [3,1,2,4]
-print(quick_sort(arr, 0, len(arr)-1), "fucking fuck the fucker.....")
 
 
 query_it = QueryIT([1, 129, 2, 75, 92, 3, 1, 7])
 #opr = query_it.second_largest()
-opr = query_it.kth_bruteforce(2)
+#opr = query_it.kth_bruteforce(2)
+opr = query_it.kth_larget_bruteforce(2)
 print(opr, " -----------------------------  the kth largest value!")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def secLarge(arr):
-    large = arr[0]
-    sec_large = large
-    for x in arr:
-        if large > x > sec_large:
-            sec_large = x
-        elif x > large:
-            sec_large = large
-            large = x
-
-    return large, sec_large
-
-print(secLarge([1, 2, 3, 4]))
 
 arr = [4, 9, 1, 5, 6, 8]; k=3
 def kthLargest(arr, k):
@@ -382,6 +336,37 @@ def kthLargest(arr, k):
 
 
     return max(arr)
+
+
+def kth_largest(arr, k):
+    res = []
+    for _ in range(k-1):
+        max_v = arr[0]
+        key = 0
+        for i in range(len(arr)):
+            if arr[i] > max_v:
+                max_v = arr[i]
+                key = i
+
+            arr.pop(i)
+
+        return max(arr)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 print(kthLargest(arr, k), "kth largest")
