@@ -1,7 +1,88 @@
-arr = [9, 1, 3, 4]
-target = 5
-for i in range(len(arr)):
-    for j in range(i+1, len(arr)):
-	if arr[i] + arr[j] == target:
-	    print([i, j])
-    print([i, j])
+
+
+a = 4
+b = 4
+print(a == b) #False #equal to
+print(a != b) #True #not equal to
+print(a > b) #False #greater than
+print(a < b) #True #less than
+print(a >= b) #True #greater than equal to
+print(a <= b) #True #less than equal to.
+
+
+
+print("-----------------------")
+
+grade = 10
+# A >= 60 <= 80 if
+# B >= 40 <= 60 elif
+# C = else
+
+if grade >= 60 <= 80:
+    print('A')
+elif grade >= 40:
+    print('B')
+elif grade == 10:
+    print("fuck off")
+else:
+    print('Fail!')
+
+
+
+
+print("WHile loop: ")
+# 1.. 10 through while loop
+"""
+while cond:
+    tasks
+"""
+i = 0
+while i <= 5: #invalide this condition to stop.
+    print("*"*i)
+    i = i + 1
+
+
+flag = True
+while flag: #why is this executing: Flag? True.. so False exit!
+    print("Yo, i'm repeating myself!")
+    #voting system.
+    user_input = int(input("Enter 0 to exit! "))
+    if user_input == 0:
+        flag = False
+        
+
+
+
+
+
+
+
+
+    
+
+#Output -> 0
+
+"""
+i = 0 -> print(0) -> 
+i = 1 -> print(1)
+i = 2 -> print(2)
+i = 3 -> print(3)
+i = 4 -> print(4)
+i = 5 -> print(5)
+i = 6 (condition 6 <= 5) False ->>>> exit
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#python -> compile -> .pyc -> PVM -> human readable.
