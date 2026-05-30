@@ -42,13 +42,13 @@ while i <= 5: #invalide this condition to stop.
     i = i + 1
 
 
-flag = True
-while flag: #why is this executing: Flag? True.. so False exit!
-    print("Yo, i'm repeating myself!")
-    #voting system.
-    user_input = int(input("Enter 0 to exit! "))
-    if user_input == 0:
-        flag = False
+#flag = True
+#while flag: #why is this executing: Flag? True.. so False exit!
+#    print("Yo, i'm repeating myself!")
+#    #voting system.
+#    user_input = int(input("Enter 0 to exit! "))
+#    if user_input == 0:
+#        flag = False
         
 
 
@@ -75,7 +75,26 @@ i = 6 (condition 6 <= 5) False ->>>> exit
 
 
 
+# 1. person-name
+names = ["omkar", "ayaan", "dnyanu", "harsh"]
+cars = ["honda", "volvo", "maruti"]
+#for loop only
+#for name in names:
+    #print(name)
 
+# for loop for range(start, end, step)
+#for i in range(len(names)):
+    #print("Yoo Baby: ", names[i])
+    #print(f"{i+1}: {names[i]}")
+
+
+# for loop for enumerate()
+#for i, name in enumerate(names):
+    #print(i+1, name)
+
+for var_name in zip(names, cars):
+    print(var_name) #outut value is in tule format
+    
 
 
 
