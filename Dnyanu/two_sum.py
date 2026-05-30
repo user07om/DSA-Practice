@@ -23,7 +23,7 @@ if grade >= 60 <= 80:
 elif grade >= 40:
     print('B')
 elif grade == 10:
-    print("fuck off")
+    print("well off")
 else:
     print('Fail!')
 
