@@ -367,7 +367,6 @@ def subarrSum_Opti(nums, k):
 
 
 #-----------------------------CRUD OPERATIONS------------------------------
-<<<<<<< HEAD
 arr = [1, 2, 3, 4]
 n = len(arr)
 # array.......................... no pythonic way.
@@ -610,5 +609,20 @@ print(trapingRain([4, 2, 0, 3, 2, 5]))
 
 
 
-=======
->>>>>>> a8b1def392eb97d3937765b910395f34e0108df6
+# -----------------------uppor and lower bound of the sorted array!
+nums = [1, 2, 2, 3, 4]
+target = 2
+
+l = 0
+h = len(nums)-1
+ans = 0
+while l <= h:
+    mid = l + (h-l) // 2
+    if nums[l] <= target:
+        ans = nums[l]
+        l = mid + 1
+    else:
+        h = mid - 1
+
+print("Yo it's lower bound: ", ans)
+
