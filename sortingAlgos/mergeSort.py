@@ -1,34 +1,38 @@
-from typing import List
+def mergeSort(arr, left, right):
+    if left < right:
+        mid = left + (right-left) //2    #this is becasue, interger value not overflow.
+        mergeSort(arr, left, mid)        #left part of the array
+        mergeSort(arr, mid+1, right)     #right part of the array
 
-class Solution:
-    def merge_sort(self, arr: List[int]) -> List[int]:
-        if len(arr)<=1:
-            return arr
+        merge(arr, left, mid, right)
 
-        mid = len(arr)//2
-        left = self.merge_sort(arr[:mid])
-        right = self.merge_sort(arr[mid:])
+def merge(arr, left, mid, right):
+    i = left; j = mid+1
+    temp = []
+    while i <= mid and j <= right:
+        if arr[i] <= arr[j]:
+            temp.append(arr[i])
+            i += 1
+        else:
+            temp.append(arr[j])
+            j += 1
 
-        return self.merge(left, right)
+    while i <= mid:
+        temp.append(arr[i])
+        i += 1
 
-    
-    def merge(self, left: List[int], right: List[int]) -> List[int]:
-        res = []
-        i = j = 0
+    while j <= right:
+        temp.append(arr[j])
+        j += 1
 
-        while i < len(left) and j < len(right):
-            if left[i] <= right[j]:
-                res.append(left[i])
-                i += 1
-            else:
-                res.append(right[j])
-                j += 1
-
-        res.extend(left[i:])
-        res.extend(right[j:])
-
-        return res
+    for i in range(len(temp)):
+        arr[i+left] = temp[i]
 
 
-sol = Solution()
-print(sol.merge_sort([3, 2, 1]))
+arr = [2,1,3]
+mergeSort(arr, 0, len(arr)-1)
+print(arr)
+
+
+        
+        
