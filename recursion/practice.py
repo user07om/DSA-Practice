@@ -169,4 +169,87 @@ print(facto(3))
 
 
 
+# def rectest(n: int) -> int:
+#     if n==0: return 0
+    
+#     rectest(n-1)
+#     print(n)
+   
+# n = 4 
+# rectest(n)
+
+def facto(n: int) -> int:
+    if n == 0: return 1
+    
+    return n * facto(n-1)
+
+n = 4
+print(facto(n))
+
+
+def sumn(n: int) -> int:
+    if n == 0: return 0
+    return n + sumn(n-1)
+
+print(sumn(4))
+
+
+
+def fibo(n: int) -> int:
+    if n == 0 or n == 1: return n
+    return fibo(n-1) + fibo(n-2)
+
+print(fibo(8))
+
+
+
+# check if array sorted or not:
+def isSort(arr: list[int], n: int) -> bool:
+    if n==0 or n==1: return True
+    return arr[n-1] >= arr[n-2] and isSort(arr, n-1)
+
+arr = [1, 4, 3, 4]
+
+print(isSort(arr, len(arr)))
+
+# arr = [1,2 ,3 , 4, 5]
+# print(arr[0:1] >= arr[1:2])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
