@@ -334,7 +334,90 @@ pr7 = pre_algo.left_and_right_diff_two()
 print("CODE HERE: ", pr7)
 
 
+# ------------------------------------------------------------------
+# JUST DOING THE PRACTICE...
+# ------------------------------------------------------------------
 
+def contains_dubli(nums: list[int]) -> bool:
+    seen = set()
+    for n in nums:
+        if n in seen:
+            return True
+        
+        seen.add(n)
+
+    return False
+
+
+def valid_anagram(s: list[str], t: list[str]) -> bool:
+    #edge case
+    if len(s) != len(t):
+        return False
+
+    #frequency of chars in s:
+    sfreq = {}
+    for i in range(len(s)):
+        if s[i] not in sfreq:
+            sfreq[s[i]] = 0
+        sfreq[s[i]] += 1
+
+
+    #decrase it's count by one.
+    for i in range(len(t)):
+        if t[i] not in sfreq:
+            return False
+
+        if sfreq[t[i]] < 0: 
+            return False
+        
+        sfreq[t[i]] -= 1
+
+    for val in sfreq.values():
+        if val > 0:
+            return False
+
+    return True
+
+def val_ana(s: list[str], t: list[str]) -> bool:
+    if len(s) != len(t): return False
+
+    #freq = Counter(s)
+    freq = {}
+    for c in s:
+        freq[c] = freq.get(c, 0) + 1
+
+    for c in t:
+        if c not in freq:
+            return False
+
+        freq[c] -= 1
+
+        if freq[c] == 0:
+            del freq[c]
+
+    return len(freq) == 0
+
+
+def grp_ana(strs: list[list[str]]): 
+    res = {}
+
+    for word in strs:
+        cnt = [0 for _ in range(26)]
+        for c in word:
+            idx = ord(c) - ord('a')
+            cnt[idx] += 1
+
+        key = tuple(cnt)
+        if key not in res:
+            res[key] = []
+
+        res[key].append(word)
+
+    return list(res.values())
+
+
+def lng_cns_seq(nums: list[int]) -> int:
+     
 
 
 

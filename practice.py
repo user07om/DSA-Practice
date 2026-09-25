@@ -249,12 +249,15 @@ def miss_num_three(arr): #GPT optimized version.
     max_v = max(arr)
 
     count = 1
-    while max_v - count is arr_set:
+    while max_v - count in arr_set:
         count += 1
 
-    return max_v - count
+    if (max_v - count) >= 0: 
+        return max_v - count
+    else:
+        return max_v + 1
 
-print("three: ", miss_num_three([0, 1, 2, 3]))
+print("three: ", miss_num_three([0, 2, 3]))
 
 def miss_num_four(arr): #YT approach
     n = len(arr)
@@ -625,4 +628,25 @@ while l <= h:
         h = mid - 1
 
 print("Yo it's lower bound: ", ans)
+
+
+
+# -----------------------product of array except self.
+nums = [1, 2, 3, 4]
+
+res = [1 for _ in range(len(nums))]
+p = 1
+crr = 0
+for i in range(1, len(nums)):
+    res[i] = nums[i] * p 
+    p = res[i] 
+
+
+s = 1
+#for i in range(len(
+
+
+# ------------------------find all anagram in a string.
+
+
 
